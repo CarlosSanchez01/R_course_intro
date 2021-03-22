@@ -77,6 +77,8 @@ git config --global user.name "Your Name"
 ```
 Then you can go to "tools" > version control > commit 
 
+Inside the commit menu you will see which changes you have made in relation to the files in the respository, you will need to "stage" them and then commit
+
 Once you commit then you need to push it to the respository branch
 
 # Rmarkdown
