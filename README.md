@@ -87,3 +87,25 @@ R markdown is a special type of formatting in which we can embeed code.
 This text here is a markdown. Rmarkdown allows to embeed R code and outputs 
 for better tracking of the changes and better reports of the used data
 and plots in the analysis.
+
+# Github pages
+
+The idea is to bring rmarkdown files for each analyses into a github pages for this repository (carlossanchez01.github.com/R_course_intro). Following this guide https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html.
+
+For this, all rmarkdown files should include the following:
+
+```{r setup, include=FALSE}
+# knit: (function(input_file, encoding) {
+#   out_dir <- '../docs/';
+#   rmarkdown::render(input_file,
+#                     encoding=encoding,
+#                     output_file=file.path(dirname(input_file), 
+#                                           out_dir, 'index.html'))})
+```
+
+Then we just need to compile the rmarkdowns in docs/ with the following:
+
+```
+setwd(dir= "docs/")
+rmarkdown::render_site()
+```

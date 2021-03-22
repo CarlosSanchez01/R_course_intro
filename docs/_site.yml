@@ -1,12 +1,14 @@
-name: "cars"
-output_dir: "docs"
+name: "Rmarkdown website"
+output_dir: "."
 navbar:
-    title: "Cars"
+    title: "Rmarkdown website"
     left:
         - text: "Home"
           href: index.html
-        - text: "Speed and Distance"
-          href: speed-and-distance.html
-          output:
-              html_document:
-                  theme: cosmo
+        # - text: "First markdown"
+        #   href: first-markdown.html
+        #   output:
+        #       html_document:
+        #           theme: cosmo
+        - text: "About"
+          href: about.html
