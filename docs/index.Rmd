@@ -1,5 +1,5 @@
 ---
-title: "About This Website"
+title: ""
 ---
 
 # This website tries to include some rmarkdown workflows for easy introduction to R
