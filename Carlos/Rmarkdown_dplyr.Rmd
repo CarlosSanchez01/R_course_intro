@@ -1,19 +1,18 @@
 ---
 title: "rmarkdown_dplyr"
+
+knit: (function(input_file, encoding) {
+  out_dir <- '../docs';
+  rmarkdown::render(input_file,
+  encoding=encoding,
+  output_file=file.path(dirname(input_file), 
+  out_dir, 'dplyr.html'))})
+ 
 author: "Carlos"
 date: "3/22/2021"
 output: html_document
 ---
 
-
-```{r setup, include=FALSE}
-knit: (function(input_file, encoding) {
-  out_dir <- '../docs/';
-  rmarkdown::render(input_file,
-                    encoding=encoding,
-                    output_file=file.path(dirname(input_file), 
-                                          out_dir, 'index.html'))})
-```
 
 ## R Markdown
 
