@@ -3,6 +3,11 @@
 This is a repository with Scripts for data analyses, visualization and statistics
 using R.
 
+I am generating a website to see the most common workflows to be used
+You can see the website at
+
+[R\_course\_intro]{https://carlossanchez01.github.io/R\_course\_intro}
+
 I recommend installing Rstudio and then we can have a look at how to sync with 
 the repository. If not you can just use it as reference.
 
@@ -92,16 +97,7 @@ and plots in the analysis.
 
 The idea is to bring rmarkdown files for each analyses into a github pages for this repository (carlossanchez01.github.com/R_course_intro). Following this guide https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html.
 
-For this, all rmarkdown files should include the following:
-
-```{r setup, include=FALSE}
-# knit: (function(input_file, encoding) {
-#   out_dir <- '../docs/';
-#   rmarkdown::render(input_file,
-#                     encoding=encoding,
-#                     output_file=file.path(dirname(input_file), 
-#                                           out_dir, 'index.html'))})
-```
+For this, all rmarkdown files should be included in doc folder.
 
 Then we just need to compile the rmarkdowns in docs/ with the following:
 
