@@ -332,6 +332,15 @@ $(document).ready(function () {
 <pre class="r"><code>install.packages(&quot;dplyr&quot;)</code></pre>
 <pre><code>## Error in install.packages : Updating loaded packages</code></pre>
 <pre class="r"><code>library(&quot;dplyr&quot;)</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.0.4</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
 <p>We can call head to see the first 10 rows of a dataset. I am using an available dataset which can be found on the dplyr library</p>
 <pre class="r"><code>starwars</code></pre>
 <pre><code>## # A tibble: 87 x 14
@@ -402,6 +411,7 @@ humans_bmi &lt;- humans_selected_columns %&gt;%
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;)</code></pre>
 <pre><code>## Error in install.packages : Updating loaded packages</code></pre>
 <pre class="r"><code>library(&quot;ggplot2&quot;)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.0.4</code></pre>
 <p>Lets try a boxplot</p>
 <pre class="r"><code>p &lt;- ggplot(humans_bmi, aes(x=homeworld, y=bmi))
 
