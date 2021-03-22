@@ -332,15 +332,6 @@ $(document).ready(function () {
 <pre class="r"><code>install.packages(&quot;dplyr&quot;)</code></pre>
 <pre><code>## Error in install.packages : Updating loaded packages</code></pre>
 <pre class="r"><code>library(&quot;dplyr&quot;)</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.0.4</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
 <p>We can call head to see the first 10 rows of a dataset. I am using an available dataset which can be found on the dplyr library</p>
 <pre class="r"><code>starwars</code></pre>
 <pre><code>## # A tibble: 87 x 14
@@ -411,7 +402,6 @@ humans_bmi &lt;- humans_selected_columns %&gt;%
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;)</code></pre>
 <pre><code>## Error in install.packages : Updating loaded packages</code></pre>
 <pre class="r"><code>library(&quot;ggplot2&quot;)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.0.4</code></pre>
 <p>Lets try a boxplot</p>
 <pre class="r"><code>p &lt;- ggplot(humans_bmi, aes(x=homeworld, y=bmi))
 
@@ -419,6 +409,35 @@ p &lt;- p + geom_boxplot()
 p + geom_jitter(shape=16, position=position_jitter(0.2))</code></pre>
 <p><img src="dplyr_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Apparently, Tattoine has a higher bmi than Naboo… but what if we have a statistic to test for it? The issue is that we have a low number of individuals (&lt;10) and special statistics are needed.</p>
+<p>Lets get those that have more than one human</p>
+<pre class="r"><code>humans_bmi %&gt;% count(homeworld)</code></pre>
+<pre><code>## # A tibble: 11 x 2
+##    homeworld        n
+##    &lt;chr&gt;        &lt;int&gt;
+##  1 Alderaan         1
+##  2 Bespin           1
+##  3 Concord Dawn     1
+##  4 Corellia         2
+##  5 Haruun Kal       1
+##  6 Kamino           1
+##  7 Naboo            2
+##  8 Serenno          1
+##  9 Socorro          1
+## 10 Stewjon          1
+## 11 Tatooine         6</code></pre>
+<pre class="r"><code>humans_filtered &lt;- humans_bmi %&gt;%
+  filter(homeworld==c(&quot;Tatooine&quot;))
+
+head(humans_filtered, 10)</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   birth_year gender     mass height homeworld   bmi
+##        &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1       41.9 masculine    84    188 Tatooine   23.8
+## 2       24   masculine    84    183 Tatooine   25.1
+## 3       19   masculine    77    172 Tatooine   26.0
+## 4       47   feminine     75    165 Tatooine   27.5
+## 5       41.9 masculine   136    202 Tatooine   33.3
+## 6       52   masculine   120    178 Tatooine   37.9</code></pre>
 </div>
 </div>
 

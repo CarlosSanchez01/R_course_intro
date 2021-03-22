@@ -74,3 +74,14 @@ p + geom_jitter(shape=16, position=position_jitter(0.2))
 ```
 
 Apparently,  Tattoine has a higher bmi than Naboo... but what if we have a statistic to test for it? The issue is that we have a low number of individuals (<10) and special statistics are needed.
+
+Lets get those that have more than one human
+
+```{r, echo=TRUE}
+humans_bmi %>% count(homeworld)
+
+humans_filtered <- humans_bmi %>%
+  filter(homeworld==c("Tatooine"))
+
+head(humans_filtered, 10)
+```

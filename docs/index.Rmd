@@ -2,7 +2,62 @@
 title: ""
 ---
 
-# This website tries to include some rmarkdown workflows for easy introduction to R
+# Rmarkdown website for easy introduction to R
+
+### Use the Navigation bar to see different markdown with examples
+
+# Basics of R
+
+You can do simple operations and assing that to variables
+```{r, echo=TRUE}
+variable_number <- 2+2
+
+variable_number
+```
+You could also have vectors which represent lists of numbers or characters.
+You can create a vector by concatenating values c()
+```{r, echo=TRUE}
+vector_numbers <- c(variable_number, 2, 4, 5)
+
+vector_characters <- c("Reactor", "pH", "TOC", "TN")
+```
+
+When you join them you can generate dataframes, which combine characters, factors and numbers
+```{r, echo=TRUE}
+first_column <- rnorm(30, 3, 0.2)
+second_column <- rnorm(30, 8, 1.2)
+third_column <- runif(30, 1, 8)
+dataframe <- data.frame(first_column, second_column, third_column)
+head(dataframe, 5)
+```
+
+We can change the name to the dataframe columns
+```{r, echo=TRUE}
+names(dataframe) <- c("one", "two", "three")
+head(dataframe, 5)
+```
 
 
-## Through the Navigation you can see different tutorials
+Now we could select specific rows or columns by the bracket operator 
+
+dataframe[rows, columns]
+```{r, echo=TRUE}
+dataframe[1:4,1:2]
+```
+
+we could even plot one against each other
+
+```{r, echo=TRUE}
+plot(dataframe$one, dataframe$two)
+```
+
+Plots have many possible arguments, for example:
+
+```{r, echo=TRUE}
+plot(dataframe$one, dataframe$two, 
+     xlab = "x axis", ylab="y axis", main="A simple plot", 
+     las =1,
+     pch =19, col = "blue")
+
+```
+
