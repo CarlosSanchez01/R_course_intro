@@ -50,7 +50,38 @@ mydata <- read.table("./mydata.csv", header=TRUE,
         sep=",")
 View(mydata)
 ```
-From now on... we will keep going in project specific rmarkdown scripts.
-rmarkdown helps keep track of the changes and produce reports with all the data
-and the plots from our analyses.
 
+# Setting Git with Rstudio
+
+You need to start a new project
+Then you mention, initialize through GIT. You enter the link https://github.com/CarlosSanchez01/R_course_intro.git and the folder where you 
+want to keep the local copy of the repository.
+
+It should initialize with this file and all the files that we will set up.
+
+I already populated one folder with each of your names. Inside this folder you will be able to set your own folder structure in a way we can see each others scripts and workflow. Also ask for comments or help.
+
+## Being able to update the repo with your data
+
+To be able to update the repository from Rstudio and thus, being able to share the code with me and between yourself, we need to tell Rstudio who you are and your email address.
+
+For this you have to install git for windows[https://git-scm.com/download/win]
+
+Then in Rstudio you will find a "Terminal"
+
+In the terminal you need to state:
+
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
+Then you can go to "tools" > version control > commit 
+
+Once you commit then you need to push it to the respository branch
+
+# Rmarkdown
+
+R markdown is a special type of formatting in which we can embeed code.
+This text here is a markdown. Rmarkdown allows to embeed R code and outputs 
+for better tracking of the changes and better reports of the used data
+and plots in the analysis.
