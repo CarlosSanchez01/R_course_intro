@@ -2,22 +2,75 @@
 title: "dplyr"
 ---
 
-## R Markdown
+# Lets have a look at [dplyr](https://dplyr.tidyverse.org/).
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+- filter() picks cases based on their values.
+- arrange() changes the ordering of the rows.
+- select() picks variables based on their names.
+- mutate() adds new variables that are functions of existing variables
+- summarise() reduces multiple values down to a single summary.
 
-```{r cars}
-summary(cars)
+These all combine naturally with group_by() which allows you to perform any operation “by group”. 
+
+All verbs work similarly:
+
+- The first argument is a data frame.
+- The subsequent arguments describe what to do with the data frame, using the variable names (without quotes).
+- The result is a new data frame.
+
+Together these properties make it easy to chain together multiple simple steps to achieve a complex result. Let’s dive in and see how these verbs work.
+
+## first install dplyr and call the library:
+
+```{r, echo=TRUE}
+install.packages("dplyr")
+library("dplyr")
+```
+We can call head to see the first 10 rows of a dataset. I am using an available dataset which can be found on the dplyr library
+```{r, echo=TRUE}
+starwars
+head(starwars)
 ```
 
-## Including Plots
+What does it have starwars? we can call column names function:
+```{r, echo=TRUE}
+colnames(starwars)
+```
+Now we can do some filtering with dplyr commands
+```{r, echo=TRUE}
+humans <- starwars %>%
+  filter(species == "Human")
 
-You can also embed plots, for example:
+humans_selected_columns <- humans %>% 
+  select(birth_year, gender, mass, height, homeworld)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+humans_bmi <- humans_selected_columns %>%
+  mutate(bmi = mass / ((height / 100)  ^ 2)) %>%
+  arrange(bmi, height, desc(birth_year)) %>%
+  na.omit
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+We can visualize as many rows as we want
+```{r, echo=TRUE}
+head(humans_bmi, 15)
+```
+
+Lets see if there is any relation between planet and bmi
+For that why dont we start with one plot? As before we start by installing the library and calling it:
+
+```{r, echo=TRUE}
+install.packages("ggplot2")
+library("ggplot2")
+```
+
+Lets try a boxplot
+```{r, echo=TRUE}
+p <- ggplot(humans_bmi, aes(x=homeworld, y=bmi))
+
+p <- p + geom_boxplot() 
+p + geom_jitter(shape=16, position=position_jitter(0.2))
+```
+
+Apparently,  Tattoine has a higher bmi than Naboo... but what if we have a statistic to test for it? The issue is that we have a low number of individuals (<10) and special statistics are needed.

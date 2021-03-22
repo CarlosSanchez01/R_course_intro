@@ -309,24 +309,107 @@ $(document).ready(function () {
 </div>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="lets-have-a-look-at-dplyr." class="section level1">
+<h1>Lets have a look at <a href="https://dplyr.tidyverse.org/">dplyr</a>.</h1>
+<p>dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:</p>
+<ul>
+<li>filter() picks cases based on their values.</li>
+<li>arrange() changes the ordering of the rows.</li>
+<li>select() picks variables based on their names.</li>
+<li>mutate() adds new variables that are functions of existing variables</li>
+<li>summarise() reduces multiple values down to a single summary.</li>
+</ul>
+<p>These all combine naturally with group_by() which allows you to perform any operation “by group”.</p>
+<p>All verbs work similarly:</p>
+<ul>
+<li>The first argument is a data frame.</li>
+<li>The subsequent arguments describe what to do with the data frame, using the variable names (without quotes).</li>
+<li>The result is a new data frame.</li>
+</ul>
+<p>Together these properties make it easy to chain together multiple simple steps to achieve a complex result. Let’s dive in and see how these verbs work.</p>
+<div id="first-install-dplyr-and-call-the-library" class="section level2">
+<h2>first install dplyr and call the library:</h2>
+<pre class="r"><code>install.packages(&quot;dplyr&quot;)</code></pre>
+<pre><code>## Error in install.packages : Updating loaded packages</code></pre>
+<pre class="r"><code>library(&quot;dplyr&quot;)</code></pre>
+<p>We can call head to see the first 10 rows of a dataset. I am using an available dataset which can be found on the dplyr library</p>
+<pre class="r"><code>starwars</code></pre>
+<pre><code>## # A tibble: 87 x 14
+##    name  height  mass hair_color skin_color eye_color birth_year sex  
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
+##  1 Luke~    172    77 blond      fair       blue            19   male 
+##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
+##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none 
+##  4 Dart~    202   136 none       white      yellow          41.9 male 
+##  5 Leia~    150    49 brown      light      brown           19   fema~
+##  6 Owen~    178   120 brown, gr~ light      blue            52   male 
+##  7 Beru~    165    75 brown      light      blue            47   fema~
+##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none 
+##  9 Bigg~    183    84 black      light      brown           24   male 
+## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male 
+## # ... with 77 more rows, and 6 more variables: gender &lt;chr&gt;,
+## #   homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,
+## #   starships &lt;list&gt;</code></pre>
+<pre class="r"><code>head(starwars)</code></pre>
+<pre><code>## # A tibble: 6 x 14
+##   name  height  mass hair_color skin_color eye_color birth_year sex  
+##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
+## 1 Luke~    172    77 blond      fair       blue            19   male 
+## 2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
+## 3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none 
+## 4 Dart~    202   136 none       white      yellow          41.9 male 
+## 5 Leia~    150    49 brown      light      brown           19   fema~
+## 6 Owen~    178   120 brown, gr~ light      blue            52   male 
+## # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;,
+## #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<p>What does it have starwars? we can call column names function:</p>
+<pre class="r"><code>colnames(starwars)</code></pre>
+<pre><code>##  [1] &quot;name&quot;       &quot;height&quot;     &quot;mass&quot;       &quot;hair_color&quot; &quot;skin_color&quot;
+##  [6] &quot;eye_color&quot;  &quot;birth_year&quot; &quot;sex&quot;        &quot;gender&quot;     &quot;homeworld&quot; 
+## [11] &quot;species&quot;    &quot;films&quot;      &quot;vehicles&quot;   &quot;starships&quot;</code></pre>
+<p>Now we can do some filtering with dplyr commands</p>
+<pre class="r"><code>humans &lt;- starwars %&gt;%
+  filter(species == &quot;Human&quot;)
+
+humans_selected_columns &lt;- humans %&gt;% 
+  select(birth_year, gender, mass, height, homeworld)
+
+humans_bmi &lt;- humans_selected_columns %&gt;%
+  mutate(bmi = mass / ((height / 100)  ^ 2)) %&gt;%
+  arrange(bmi, height, desc(birth_year)) %&gt;%
+  na.omit</code></pre>
+<p>We can visualize as many rows as we want</p>
+<pre class="r"><code>head(humans_bmi, 15)</code></pre>
+<pre><code>## # A tibble: 15 x 6
+##    birth_year gender     mass height homeworld      bmi
+##         &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+##  1       46   feminine   45      165 Naboo         16.5
+##  2      102   masculine  80      193 Serenno       21.5
+##  3       19   feminine   49      150 Alderaan      21.8
+##  4       57   masculine  77      182 Stewjon       23.2
+##  5       31.5 masculine  78.2    183 Kamino        23.4
+##  6       66   masculine  79      183 Concord Dawn  23.6
+##  7       72   masculine  84      188 Haruun Kal    23.8
+##  8       41.9 masculine  84      188 Tatooine      23.8
+##  9       29   masculine  80      180 Corellia      24.7
+## 10       24   masculine  84      183 Tatooine      25.1
+## 11       31   masculine  79      177 Socorro       25.2
+## 12       37   masculine  79      175 Bespin        25.8
+## 13       82   masculine  75      170 Naboo         26.0
+## 14       19   masculine  77      172 Tatooine      26.0
+## 15       21   masculine  77      170 Corellia      26.6</code></pre>
+<p>Lets see if there is any relation between planet and bmi For that why dont we start with one plot? As before we start by installing the library and calling it:</p>
+<pre class="r"><code>install.packages(&quot;ggplot2&quot;)</code></pre>
+<pre><code>## Error in install.packages : Updating loaded packages</code></pre>
+<pre class="r"><code>library(&quot;ggplot2&quot;)</code></pre>
+<p>Lets try a boxplot</p>
+<pre class="r"><code>p &lt;- ggplot(humans_bmi, aes(x=homeworld, y=bmi))
+
+p &lt;- p + geom_boxplot() 
+p + geom_jitter(shape=16, position=position_jitter(0.2))</code></pre>
+<p><img src="dplyr_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Apparently, Tattoine has a higher bmi than Naboo… but what if we have a statistic to test for it? The issue is that we have a low number of individuals (&lt;10) and special statistics are needed.</p>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="dplyr_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </div>
 
 <p>Copyright &copy; 2021 Carlos Sanchez.</p>
