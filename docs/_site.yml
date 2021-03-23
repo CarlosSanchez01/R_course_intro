@@ -6,7 +6,7 @@ navbar:
         - text: "Home"
           href: index.html
         - text: "Dplyr"
-          href: Rmarkdown_dplyr.html
+          href: dplyr.html
         - text: "About"
           href: about.html
 

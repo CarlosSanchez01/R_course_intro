@@ -287,7 +287,7 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="Rmarkdown_dplyr.html">Dplyr</a>
+  <a href="dplyr.html">Dplyr</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -308,11 +308,61 @@ $(document).ready(function () {
 </div>
 
 
-<div id="this-website-tries-to-include-some-rmarkdown-workflows-for-easy-introduction-to-r" class="section level1">
-<h1>This website tries to include some rmarkdown workflows for easy introduction to R</h1>
-<div id="through-the-navigation-you-can-see-different-tutorials" class="section level2">
-<h2>Through the Navigation you can see different tutorials</h2>
+<div id="rmarkdown-website-for-easy-introduction-to-r" class="section level1">
+<h1>Rmarkdown website for easy introduction to R</h1>
+<div id="use-the-navigation-bar-to-see-different-markdown-with-examples" class="section level3">
+<h3>Use the Navigation bar to see different markdown with examples</h3>
 </div>
+</div>
+<div id="basics-of-r" class="section level1">
+<h1>Basics of R</h1>
+<p>You can do simple operations and assing that to variables</p>
+<pre class="r"><code>variable_number &lt;- 2+2
+
+variable_number</code></pre>
+<pre><code>## [1] 4</code></pre>
+<p>You could also have vectors which represent lists of numbers or characters. You can create a vector by concatenating values c()</p>
+<pre class="r"><code>vector_numbers &lt;- c(variable_number, 2, 4, 5)
+
+vector_characters &lt;- c(&quot;Reactor&quot;, &quot;pH&quot;, &quot;TOC&quot;, &quot;TN&quot;)</code></pre>
+<p>When you join them you can generate dataframes, which combine characters, factors and numbers</p>
+<pre class="r"><code>first_column &lt;- rnorm(30, 3, 0.2)
+second_column &lt;- rnorm(30, 8, 1.2)
+third_column &lt;- runif(30, 1, 8)
+dataframe &lt;- data.frame(first_column, second_column, third_column)
+head(dataframe, 5)</code></pre>
+<pre><code>##   first_column second_column third_column
+## 1     2.806799      8.426058     4.966668
+## 2     3.257340      7.610567     7.705737
+## 3     2.930478      7.810342     2.824146
+## 4     2.972668      7.412962     2.936391
+## 5     2.898576      8.667546     7.255515</code></pre>
+<p>We can change the name to the dataframe columns</p>
+<pre class="r"><code>names(dataframe) &lt;- c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;)
+head(dataframe, 5)</code></pre>
+<pre><code>##        one      two    three
+## 1 2.806799 8.426058 4.966668
+## 2 3.257340 7.610567 7.705737
+## 3 2.930478 7.810342 2.824146
+## 4 2.972668 7.412962 2.936391
+## 5 2.898576 8.667546 7.255515</code></pre>
+<p>Now we could select specific rows or columns by the bracket operator</p>
+<p>dataframe[rows, columns]</p>
+<pre class="r"><code>dataframe[1:4,1:2]</code></pre>
+<pre><code>##        one      two
+## 1 2.806799 8.426058
+## 2 3.257340 7.610567
+## 3 2.930478 7.810342
+## 4 2.972668 7.412962</code></pre>
+<p>we could even plot one against each other</p>
+<pre class="r"><code>plot(dataframe$one, dataframe$two)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Plots have many possible arguments, for example:</p>
+<pre class="r"><code>plot(dataframe$one, dataframe$two, 
+     xlab = &quot;x axis&quot;, ylab=&quot;y axis&quot;, main=&quot;A simple plot&quot;, 
+     las =1,
+     pch =19, col = &quot;blue&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 
 <p>Copyright &copy; 2021 Carlos Sanchez.</p>
