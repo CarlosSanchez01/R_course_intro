@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
 <meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
 <title>dplyr</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -23,15 +22,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -78,7 +68,6 @@ h6 {
 }
 </style>
 
-
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
 
@@ -95,6 +84,7 @@ code {
 }
 img {
   max-width:100%;
+  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -243,7 +233,6 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
-  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -255,6 +244,18 @@ $(document).ready(function () {
   display: none;
 }
 </style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
 
 <!-- code folding -->
 
@@ -330,38 +331,132 @@ $(document).ready(function () {
 <div id="first-install-dplyr-and-call-the-library" class="section level2">
 <h2>first install dplyr and call the library:</h2>
 <pre class="r"><code>install.packages(&quot;dplyr&quot;)</code></pre>
-<pre><code>## Error in install.packages : Updating loaded packages</code></pre>
+<pre><code>## --- Please select a CRAN mirror for use in this session ---
+## Secure CRAN mirrors 
+## 
+##  1: 0-Cloud [https]
+##  2: Australia (Canberra) [https]
+##  3: Australia (Melbourne 1) [https]
+##  4: Australia (Melbourne 2) [https]
+##  5: Australia (Perth) [https]
+##  6: Austria [https]
+##  7: Brazil (BA) [https]
+##  8: Brazil (PR) [https]
+##  9: Brazil (RJ) [https]
+## 10: Brazil (SP 1) [https]
+## 11: Brazil (SP 2) [https]
+## 12: Bulgaria [https]
+## 13: Canada (MB) [https]
+## 14: Chile (Santiago) [https]
+## 15: China (Beijing 2) [https]
+## 16: China (Hefei) [https]
+## 17: China (Hong Kong) [https]
+## 18: China (Guangzhou) [https]
+## 19: China (Lanzhou) [https]
+## 20: China (Nanjing) [https]
+## 21: China (Shanghai 1) [https]
+## 22: China (Shanghai 2) [https]
+## 23: Costa Rica [https]
+## 24: Denmark [https]
+## 25: East Asia [https]
+## 26: Ecuador (Cuenca) [https]
+## 27: Ecuador (Quito) [https]
+## 28: Estonia [https]
+## 29: France (Lyon 1) [https]
+## 30: France (Lyon 2) [https]
+## 31: France (Marseille) [https]
+## 32: France (Montpellier) [https]
+## 33: Germany (Erlangen) [https]
+## 34: Germany (Leipzig) [https]
+## 35: Germany (Göttingen) [https]
+## 36: Germany (Münster) [https]
+## 37: Germany (Regensburg) [https]
+## 38: Greece [https]
+## 39: Hungary [https]
+## 40: Iceland [https]
+## 41: India [https]
+## 42: Indonesia (Jakarta) [https]
+## 43: Iran [https]
+## 44: Italy (Milano) [https]
+## 45: Italy (Padua) [https]
+## 46: Japan (Tokyo) [https]
+## 47: Korea (Gyeongsan-si) [https]
+## 48: Korea (Seoul 1) [https]
+## 49: Korea (Ulsan) [https]
+## 50: Malaysia [https]
+## 51: Mexico (Mexico City) [https]
+## 52: Morocco [https]
+## 53: Netherlands [https]
+## 54: Norway [https]
+## 55: Philippines [https]
+## 56: Russia (Moscow) [https]
+## 57: South Africa (Johannesburg) [https]
+## 58: Spain (A Coruña) [https]
+## 59: Spain (Madrid) [https]
+## 60: Sweden (Borås) [https]
+## 61: Sweden (Umeå) [https]
+## 62: Switzerland [https]
+## 63: Taiwan (Taipei) [https]
+## 64: Turkey (Denizli) [https]
+## 65: Turkey (Istanbul) [https]
+## 66: Turkey (Mersin) [https]
+## 67: UK (Bristol) [https]
+## 68: UK (London 1) [https]
+## 69: USA (IA) [https]
+## 70: USA (KS) [https]
+## 71: USA (MI) [https]
+## 72: USA (OH) [https]
+## 73: USA (OR) [https]
+## 74: USA (TN) [https]
+## 75: USA (TX 1) [https]
+## 76: Uruguay [https]
+## 77: (other mirrors)
+## 
+## Enter an item from the menu, or 0 to exit</code></pre>
+<pre><code>## also installing the dependencies &#39;ellipsis&#39;, &#39;pillar&#39;, &#39;glue&#39;, &#39;lifecycle&#39;, &#39;rlang&#39;, &#39;tibble&#39;, &#39;tidyselect&#39;, &#39;vctrs&#39;</code></pre>
+<pre><code>## Updating HTML index of packages in &#39;.Library&#39;</code></pre>
+<pre><code>## Making &#39;packages.html&#39; ... done</code></pre>
 <pre class="r"><code>library(&quot;dplyr&quot;)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;
+## 
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
 <p>We can call head to see the first 10 rows of a dataset. I am using an available dataset which can be found on the dplyr library</p>
 <pre class="r"><code>starwars</code></pre>
 <pre><code>## # A tibble: 87 x 14
-##    name  height  mass hair_color skin_color eye_color birth_year sex  
-##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
-##  1 Luke~    172    77 blond      fair       blue            19   male 
-##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
-##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none 
-##  4 Dart~    202   136 none       white      yellow          41.9 male 
-##  5 Leia~    150    49 brown      light      brown           19   fema~
-##  6 Owen~    178   120 brown, gr~ light      blue            52   male 
-##  7 Beru~    165    75 brown      light      blue            47   fema~
-##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none 
-##  9 Bigg~    183    84 black      light      brown           24   male 
-## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male 
-## # ... with 77 more rows, and 6 more variables: gender &lt;chr&gt;,
+##    name      height  mass hair_color  skin_color eye_color birth_year sex  
+##    &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
+##  1 Luke Sky…    172    77 blond       fair       blue            19   male 
+##  2 C-3PO        167    75 &lt;NA&gt;        gold       yellow         112   none 
+##  3 R2-D2         96    32 &lt;NA&gt;        white, bl… red             33   none 
+##  4 Darth Va…    202   136 none        white      yellow          41.9 male 
+##  5 Leia Org…    150    49 brown       light      brown           19   fema…
+##  6 Owen Lars    178   120 brown, grey light      blue            52   male 
+##  7 Beru Whi…    165    75 brown       light      blue            47   fema…
+##  8 R5-D4         97    32 &lt;NA&gt;        white, red red             NA   none 
+##  9 Biggs Da…    183    84 black       light      brown           24   male 
+## 10 Obi-Wan …    182    77 auburn, wh… fair       blue-gray       57   male 
+## # … with 77 more rows, and 6 more variables: gender &lt;chr&gt;,
 ## #   homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,
 ## #   starships &lt;list&gt;</code></pre>
 <pre class="r"><code>head(starwars)</code></pre>
 <pre><code>## # A tibble: 6 x 14
-##   name  height  mass hair_color skin_color eye_color birth_year sex  
-##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
-## 1 Luke~    172    77 blond      fair       blue            19   male 
-## 2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
-## 3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none 
-## 4 Dart~    202   136 none       white      yellow          41.9 male 
-## 5 Leia~    150    49 brown      light      brown           19   fema~
-## 6 Owen~    178   120 brown, gr~ light      blue            52   male 
-## # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;,
-## #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+##   name       height  mass hair_color  skin_color eye_color birth_year sex  
+##   &lt;chr&gt;       &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
+## 1 Luke Skyw…    172    77 blond       fair       blue            19   male 
+## 2 C-3PO         167    75 &lt;NA&gt;        gold       yellow         112   none 
+## 3 R2-D2          96    32 &lt;NA&gt;        white, bl… red             33   none 
+## 4 Darth Vad…    202   136 none        white      yellow          41.9 male 
+## 5 Leia Orga…    150    49 brown       light      brown           19   fema…
+## 6 Owen Lars     178   120 brown, grey light      blue            52   male 
+## # … with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>What does it have starwars? we can call column names function:</p>
 <pre class="r"><code>colnames(starwars)</code></pre>
 <pre><code>##  [1] &quot;name&quot;       &quot;height&quot;     &quot;mass&quot;       &quot;hair_color&quot; &quot;skin_color&quot;
@@ -400,7 +495,9 @@ humans_bmi &lt;- humans_selected_columns %&gt;%
 ## 15       21   masculine  77      170 Corellia      26.6</code></pre>
 <p>Lets see if there is any relation between planet and bmi For that why dont we start with one plot? As before we start by installing the library and calling it:</p>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;)</code></pre>
-<pre><code>## Error in install.packages : Updating loaded packages</code></pre>
+<pre><code>## also installing the dependency &#39;isoband&#39;</code></pre>
+<pre><code>## Updating HTML index of packages in &#39;.Library&#39;</code></pre>
+<pre><code>## Making &#39;packages.html&#39; ... done</code></pre>
 <pre class="r"><code>library(&quot;ggplot2&quot;)</code></pre>
 <p>Lets try a boxplot</p>
 <pre class="r"><code>p &lt;- ggplot(humans_bmi, aes(x=homeworld, y=bmi))
@@ -451,7 +548,7 @@ head(humans_filtered, 10)</code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -459,23 +556,6 @@ $(document).ready(function () {
 
 
 </script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
-<!-- code folding -->
-
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
