@@ -1,5 +1,9 @@
 ---
 title: "dplyr"
+output:  
+    html_document:  
+        toc_float: true 
+        toc: true  
 ---
 
 # Lets have a look at [dplyr](https://dplyr.tidyverse.org/).

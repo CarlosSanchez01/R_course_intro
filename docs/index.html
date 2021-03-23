@@ -432,28 +432,28 @@ third_column &lt;- runif(30, 1, 8)
 dataframe &lt;- data.frame(first_column, second_column, third_column)
 head(dataframe, 5)</code></pre>
 <pre><code>##   first_column second_column third_column
-## 1     2.783827      9.370694     5.964364
-## 2     3.042690      6.788155     1.905797
-## 3     3.006818      7.186961     6.660133
-## 4     3.169764      6.462013     1.552166
-## 5     2.552127      7.282938     1.697892</code></pre>
+## 1     2.717765      8.199590     6.630948
+## 2     3.095585      7.291464     5.807192
+## 3     3.220983      8.622157     2.658472
+## 4     3.074277      7.660146     1.013958
+## 5     3.256930      9.459837     5.174523</code></pre>
 <p>We can change the name to the dataframe columns</p>
 <pre class="r"><code>names(dataframe) &lt;- c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;)
 head(dataframe, 5)</code></pre>
 <pre><code>##        one      two    three
-## 1 2.783827 9.370694 5.964364
-## 2 3.042690 6.788155 1.905797
-## 3 3.006818 7.186961 6.660133
-## 4 3.169764 6.462013 1.552166
-## 5 2.552127 7.282938 1.697892</code></pre>
+## 1 2.717765 8.199590 6.630948
+## 2 3.095585 7.291464 5.807192
+## 3 3.220983 8.622157 2.658472
+## 4 3.074277 7.660146 1.013958
+## 5 3.256930 9.459837 5.174523</code></pre>
 <p>Now we could select specific rows or columns by the bracket operator</p>
 <p>dataframe[rows, columns]</p>
 <pre class="r"><code>dataframe[1:4,1:2]</code></pre>
 <pre><code>##        one      two
-## 1 2.783827 9.370694
-## 2 3.042690 6.788155
-## 3 3.006818 7.186961
-## 4 3.169764 6.462013</code></pre>
+## 1 2.717765 8.199590
+## 2 3.095585 7.291464
+## 3 3.220983 8.622157
+## 4 3.074277 7.660146</code></pre>
 <p>we could even plot one against each other</p>
 <pre class="r"><code>plot(dataframe$one, dataframe$two)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
