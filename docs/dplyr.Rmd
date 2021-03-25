@@ -2,8 +2,13 @@
 title: "dplyr"
 output:  
     html_document:  
-        toc_float: true 
         toc: true  
+        toc_float: true 
+        collapsed: false
+        smooth_scroll: false
+        number_sections: true
+        df_print: paged
+        code_folding: hide
 ---
 
 # Lets have a look at [dplyr](https://dplyr.tidyverse.org/).
