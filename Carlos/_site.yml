@@ -1,5 +1,5 @@
 name: "Rmarkdown website"
-output_dir: "."
+output_dir: "../docs"
 navbar:
     title: "Rmarkdown website"
     left:

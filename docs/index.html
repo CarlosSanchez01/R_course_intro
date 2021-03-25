@@ -432,28 +432,28 @@ third_column &lt;- runif(30, 1, 8)
 dataframe &lt;- data.frame(first_column, second_column, third_column)
 head(dataframe, 5)</code></pre>
 <pre><code>##   first_column second_column third_column
-## 1     3.178259      7.013082     5.223388
-## 2     2.967068      8.589045     6.939416
-## 3     2.796508      8.457260     7.349705
-## 4     2.880455      6.570507     1.303046
-## 5     2.861281      7.641847     6.645215</code></pre>
+## 1     3.018871      7.487274     3.717373
+## 2     3.185043      8.328207     2.657410
+## 3     2.753606      8.464811     5.902840
+## 4     2.870838     10.726697     6.205861
+## 5     3.026387      9.325030     7.373664</code></pre>
 <p>We can change the name to the dataframe columns</p>
 <pre class="r"><code>names(dataframe) &lt;- c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;)
 head(dataframe, 5)</code></pre>
-<pre><code>##        one      two    three
-## 1 3.178259 7.013082 5.223388
-## 2 2.967068 8.589045 6.939416
-## 3 2.796508 8.457260 7.349705
-## 4 2.880455 6.570507 1.303046
-## 5 2.861281 7.641847 6.645215</code></pre>
+<pre><code>##        one       two    three
+## 1 3.018871  7.487274 3.717373
+## 2 3.185043  8.328207 2.657410
+## 3 2.753606  8.464811 5.902840
+## 4 2.870838 10.726697 6.205861
+## 5 3.026387  9.325030 7.373664</code></pre>
 <p>Now we could select specific rows or columns by the bracket operator</p>
 <p>dataframe[rows, columns]</p>
 <pre class="r"><code>dataframe[1:4,1:2]</code></pre>
-<pre><code>##        one      two
-## 1 3.178259 7.013082
-## 2 2.967068 8.589045
-## 3 2.796508 8.457260
-## 4 2.880455 6.570507</code></pre>
+<pre><code>##        one       two
+## 1 3.018871  7.487274
+## 2 3.185043  8.328207
+## 3 2.753606  8.464811
+## 4 2.870838 10.726697</code></pre>
 <p>we could even plot one against each other</p>
 <pre class="r"><code>plot(dataframe$one, dataframe$two)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
