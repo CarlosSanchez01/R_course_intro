@@ -7,6 +7,8 @@ navbar:
           href: index.html
         - text: "Dplyr"
           href: dplyr.html
+        - text: "ggplot2"
+          href: ggplot2.html
         - text: "About"
           href: about.html
 
