@@ -5,6 +5,8 @@ navbar:
     left:
         - text: "Home"
           href: index.html
+        - text: "comparing base and tidyverse"
+          href: r_base_vs_tidyverse.html
         - text: "Dplyr"
           href: dplyr.html
         - text: "ggplot2"
