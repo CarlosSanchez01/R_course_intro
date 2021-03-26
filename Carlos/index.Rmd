@@ -1,14 +1,25 @@
 ---
-title: ""
+title: "Home"
 output:  
     html_document:  
-        toc_float: true 
         toc: true  
+        toc_float: true 
+        collapsed: false
+        smooth_scroll: false
+        number_sections: true
+        df_print: paged
+        code_folding: hide
 ---
 
 # Rmarkdown website for easy introduction to R
 
 ### Use the Navigation bar to see different markdown with examples
+
+## Some interesting links:
+
+- [Data carpentry](https://datacarpentry.org/)
+- [R for Data Science](https://r4ds.had.co.nz/)
+- [Tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
 
 # Basics of R
 

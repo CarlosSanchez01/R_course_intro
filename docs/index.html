@@ -11,7 +11,7 @@
 
 
 
-<title>index.utf8</title>
+<title>Home</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,8 +23,11 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -261,6 +264,14 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 
@@ -408,20 +419,37 @@ div.tocify {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
+
+<h1 class="title toc-ignore">Home</h1>
 
 </div>
 
 
-<div id="rmarkdown-website-for-easy-introduction-to-r" class="section level1">
-<h1>Rmarkdown website for easy introduction to R</h1>
-<div id="use-the-navigation-bar-to-see-different-markdown-with-examples" class="section level3">
-<h3>Use the Navigation bar to see different markdown with examples</h3>
+<div id="rmarkdown-website-for-easy-introduction-to-r" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Rmarkdown website for easy introduction to R</h1>
+<div id="use-the-navigation-bar-to-see-different-markdown-with-examples" class="section level3" number="1.0.1">
+<h3 number="1.0.1"><span class="header-section-number">1.0.1</span> Use the Navigation bar to see different markdown with examples</h3>
+</div>
+<div id="some-interesting-links" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Some interesting links:</h2>
+<ul>
+<li><a href="https://datacarpentry.org/">Data carpentry</a></li>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+<li><a href="https://rstudio-education.github.io/tidyverse-cookbook/">Tidyverse cookbook</a></li>
+</ul>
 </div>
 </div>
-<div id="basics-of-r" class="section level1">
-<h1>Basics of R</h1>
+<div id="basics-of-r" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Basics of R</h1>
 <p>You can do simple operations and assing that to variables</p>
 <pre class="r"><code>variable_number &lt;- 2+2
 
@@ -437,29 +465,27 @@ second_column &lt;- rnorm(30, 8, 1.2)
 third_column &lt;- runif(30, 1, 8)
 dataframe &lt;- data.frame(first_column, second_column, third_column)
 head(dataframe, 5)</code></pre>
-<pre><code>##   first_column second_column third_column
-## 1     3.146108      8.534314     1.673787
-## 2     2.774337      9.176740     7.763640
-## 3     2.880794      7.777891     5.436095
-## 4     2.921859      7.062941     2.789056
-## 5     3.254208      6.730645     7.992032</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["first_column"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["second_column"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["third_column"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2.776851","2":"8.492294","3":"2.344504","_rn_":"1"},{"1":"2.786879","2":"7.679989","3":"3.718017","_rn_":"2"},{"1":"3.097910","2":"6.908692","3":"7.784209","_rn_":"3"},{"1":"2.689381","2":"7.926896","3":"7.764138","_rn_":"4"},{"1":"3.314801","2":"8.446647","3":"2.917429","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>We can change the name to the dataframe columns</p>
 <pre class="r"><code>names(dataframe) &lt;- c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;)
 head(dataframe, 5)</code></pre>
-<pre><code>##        one      two    three
-## 1 3.146108 8.534314 1.673787
-## 2 2.774337 9.176740 7.763640
-## 3 2.880794 7.777891 5.436095
-## 4 2.921859 7.062941 2.789056
-## 5 3.254208 6.730645 7.992032</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["one"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["two"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["three"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2.776851","2":"8.492294","3":"2.344504","_rn_":"1"},{"1":"2.786879","2":"7.679989","3":"3.718017","_rn_":"2"},{"1":"3.097910","2":"6.908692","3":"7.784209","_rn_":"3"},{"1":"2.689381","2":"7.926896","3":"7.764138","_rn_":"4"},{"1":"3.314801","2":"8.446647","3":"2.917429","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>Now we could select specific rows or columns by the bracket operator</p>
 <p>dataframe[rows, columns]</p>
 <pre class="r"><code>dataframe[1:4,1:2]</code></pre>
-<pre><code>##        one      two
-## 1 3.146108 8.534314
-## 2 2.774337 9.176740
-## 3 2.880794 7.777891
-## 4 2.921859 7.062941</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["one"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["two"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"2.776851","2":"8.492294","_rn_":"1"},{"1":"2.786879","2":"7.679989","_rn_":"2"},{"1":"3.097910","2":"6.908692","_rn_":"3"},{"1":"2.689381","2":"7.926896","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>we could even plot one against each other</p>
 <pre class="r"><code>plot(dataframe$one, dataframe$two)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
