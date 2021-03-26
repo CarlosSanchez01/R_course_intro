@@ -5,6 +5,10 @@ output:
         toc_float: true 
         toc: true  
 ---
-# Lets learn som ggplot2 as well
+# Lets learn some ggplot2 as well
 
 ### [ggplot2](https://ggplot2.tidyverse.org/)
+
+This package is used to produce plots, it have a special type
+of syntax. You assign data to a plot variable and then add 
+aesthetics or other conditions.
